@@ -24,10 +24,13 @@
         }
         p{
             background-color: #9cd8b5;
-            width: 50%;
+            width: 100%;
             text-align: center;
             border-radius: 10px;
             font-family: "Times New Roman", Times, serif;
+        }
+        #str-para-resultado{
+            font-size: 25px;
         }
         input{
             border-radius: 5px;
@@ -55,23 +58,26 @@
         <span> Soma</span>
         
         <p onclick="calcularPA()">Calcular PA</p>
+
+        <p id="str-para-resultado"></p>
     </div>
     <script>
         function calcularPA(){
             let initialnum = Number(document.getElementById("initialnum").value)
+            let str_para_resultado = initialnum
             let rep = Number(document.getElementById("rep").value)
             let soma = Number(document.getElementById("soma").value)
             let calculo = initialnum
             let calculo2 = 0
-            console.log(calculo)
             if (rep != 0){
                 for(i=1; i != rep; i++){
                     calculo += soma
-                    console.log(calculo)
+                    str_para_resultado += " + " + calculo
+                    document.getElementById("str-para-resultado").innerText = str_para_resultado
                     if (i == rep - 1){
                         calculo2 = (calculo + initialnum) * (rep / 2)
-                        console.log(calculo2)
-                        console.log("aaaa")
+                        str_para_resultado += " = " + calculo2 + "."
+                        document.getElementById("str-para-resultado").innerText = str_para_resultado
                     }
                 }
             }
